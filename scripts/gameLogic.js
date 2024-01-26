@@ -7,7 +7,7 @@ const board = (function () {
     [null, null, null],
     [null, null, null]
   ];
-  const gameBoard = createBoard();
+  let gameBoard = createBoard();
   const clear = () => gameBoard = createBoard();
   const get = () => gameBoard;
   const getElement = (x, y) => gameBoard[y][x];
@@ -15,7 +15,7 @@ const board = (function () {
   return { get, put, clear, getElement }
 })();
 
-export const clearBoard = () => gameBoard.clear();
+export const clearBoard = () => board.clear();
 
 /**
  * Module pattern for check if someone wins 
@@ -26,30 +26,31 @@ const check = (function () {
     const currentElement = board.getElement(x, y);
     if (currentElement === marker)
       matches++;
+    return matches
   }
   const winVerification = (matches) => (matches === 3) ? true : false;
   function rows(y, marker) {
     let matches = 0;
     for (let x = 0; x < THREE_IN_A_ROW; x++)
-      checkEquality(x, y, marker, matches);
+      matches = checkEquality(x, y, marker, matches);
     return winVerification(matches);
   }
 
   function columns(x, marker) {
     let matches = 0;
     for (let y = 0; y < THREE_IN_A_ROW; y++)
-      checkEquality(x, y, marker, matches);
+      matches = checkEquality(x, y, marker, matches);
     return winVerification(matches);
   }
   function diagonals(marker) {
     let matches = 0;
     for (let xY = 0; xY < THREE_IN_A_ROW; xY++)
-      checkEquality(xY, xY, marker, matches);
+      matches = checkEquality(xY, xY, marker, matches);
     if (winVerification(matches)) return true;
     matches = 0;
-    y = 0;
+    let y = 0;
     for (let x = 2; x >= 0; x--) {
-      checkEquality(x, y, marker, matches);
+      matches = checkEquality(x, y, marker, matches);
       y++;
     }
     return winVerification(matches);
@@ -72,5 +73,6 @@ export function createPlayer(marker) {
     board.put(x, y, marker);
     return check.all(x, y, marker);
   };
-  return { play }
+  const getMarker = () => marker;
+  return { play, getMarker }
 }

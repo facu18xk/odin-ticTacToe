@@ -33,4 +33,36 @@ body {
 
 .board--box {
   border: 1px solid gray;
+  padding: 5px;
+}
+
+.popup {
+  width: 320px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  border-radius: 17px;
+  background-color: rgba(1, 1, 1, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.221);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.popup button {
+  padding: 5px 10px;
+  background: var(--bg-gradient);
+  color: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 10px;
+}
+
+.popup:hover {
+  transform: scale(1.1);
 }
