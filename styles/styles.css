@@ -1,0 +1,36 @@
+:root {
+  --bg-gradient: linear-gradient(0deg, #3A7BD5, rgba(0, 210, 255, .77));
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  color: white;
+}
+
+.game {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  padding: 25px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  height: 370px;
+  width: 370px;
+  border-radius: 20px;
+}
+
+.board--box {
+  border: 1px solid gray;
+}
