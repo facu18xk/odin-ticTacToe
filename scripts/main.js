@@ -72,7 +72,7 @@ const game = (function () {
   }
   function turn(ev) {
     const element = ev.target;
-    if (element.childElementCount === 0) {
+    if (element.childElementCount === 0 && element.className === "board--box") {
       const x = box.getX(element);
       const y = box.getY(element);
       box.addMarker(element, players[currentPlayer].getMarker());

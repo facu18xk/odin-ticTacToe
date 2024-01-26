@@ -66,3 +66,22 @@ body {
 .popup:hover {
   transform: scale(1.1);
 }
+
+.reset {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--bg-gradient);
+  color: white;
+  transition: all 0.5s;
+  border: 1px solid rgba(0, 208, 255, 0.409);
+}
+
+.reset:hover {
+
+  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
